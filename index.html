@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Furlan</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* NAVBAR */
+header {
+    background: #1f5e2c;
+    color: #fff;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo span {
+    background: #f5b400;
+    color: #000;
+    padding: 3px 8px;
+    border-radius: 6px;
+    margin-left: 5px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+/* HERO */
+.hero {
+    height: 90vh;
+    background: linear-gradient(rgba(0,80,0,0.8), rgba(0,80,0,0.8)),
+                url('https://via.placeholder.com/1500');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: 60px;
+    margin: 10px 0;
+}
+
+.hero-content h2 {
+    color: #f5b400;
+    font-size: 28px;
+}
+
+.hero-content p {
+    margin-top: 10px;
+}
+
+.badge {
+    display: inline-block;
+    background: #f5b400;
+    color: #000;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 5px;
+    display: inline-block;
+}
+
+.btn-green {
+    background: #2f7a3e;
+    color: #fff;
+}
+
+.btn-yellow {
+    background: #f5b400;
+    color: #000;
+}
+
+/* SECTION */
+.section {
+    padding: 60px 40px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.section img {
+    width: 400px;
+    border-radius: 20px;
+}
+
+.section-content h2 {
+    color: #1f5e2c;
+    font-size: 36px;
+}
+
+.stats {
+    margin-top: 30px;
+    display: flex;
+    gap: 40px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat h3 {
+    color: #1f5e2c;
+    font-size: 28px;
+}
+
+/* FLOAT BUTTON */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25d366;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Dr. Furlan <span>55</span></div>
+    <nav>
+        <a href="#">INÍCIO</a>
+        <a href="#">QUEM SOU</a>
+        <a href="#">OBRAS</a>
+        <a href="#">PROPOSTAS</a>
+        <a href="#">GALERIA</a>
+        <a href="#">DEPOIMENTOS</a>
+        <a href="#">CONTATO</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="badge">PSD • NÚMERO 55</div>
+        <h1>Dr. Furlan</h1>
+        <h2>Ex-prefeito de Macapá • A voz do povo amapaense</h2>
+        <p>Saúde, obras e dignidade — quem fez, vai fazer mais</p>
+
+        <div class="buttons">
+            <a href="#" class="btn btn-green">VEJA AS OBRAS</a>
+            <a href="#" class="btn btn-yellow">FALE COM O DR. FURLAN</a>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <img src="https://via.placeholder.com/400" alt="Dr Furlan">
+
+    <div class="section-content">
+        <h2>Quem é o Dr. Furlan</h2>
+        <p>
+            Nascido e criado em Macapá, o Dr. Furlan é médico há mais de 20 anos.
+            Conhece de perto a realidade do povo amapaense.
+        </p>
+        <p>
+            Foi prefeito de Macapá de 2020 a 2026, período em que transformou a cidade
+            com obras que levaram dignidade, saúde e lazer.
+        </p>
+
+        <div class="stats">
+            <div class="stat">
+                <h3>+20</h3>
+                <p>Anos de Medicina</p>
+            </div>
+            <div class="stat">
+                <h3>6</h3>
+                <p>Anos como Prefeito</p>
+            </div>
+            <div class="stat">
+                <h3>+50</h3>
+                <p>Obras Entregues</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="whatsapp"></div>
+
+</body>
+</html>
