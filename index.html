@@ -1,215 +1,724 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dr. Furlan</title>
-
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dr. Furlan 55 — PSD Fortaleza</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: #333;
-}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --verde:#1B5E20;
+    --verde-medio:#2E7D32;
+    --verde-claro:#4CAF50;
+    --dourado:#F9A825;
+    --dourado-escuro:#F57F17;
+    --branco:#FFFFFF;
+    --cinza-claro:#F5F5F5;
+    --cinza-texto:#555;
+    --sombra:0 4px 20px rgba(0,0,0,0.12);
+  }
+  html{scroll-behavior:smooth;}
+  body{font-family:'Lato',sans-serif;color:#222;background:#fff;overflow-x:hidden;}
 
-/* NAVBAR */
-header {
-    background: #1f5e2c;
-    color: #fff;
-    padding: 15px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+  /* ===== HEADER ===== */
+  header{
+    position:fixed;top:0;left:0;width:100%;z-index:999;
+    background:rgba(27,94,32,0.97);backdrop-filter:blur(8px);
+    padding:12px 5%;display:flex;align-items:center;justify-content:space-between;
+    transition:all .3s;
+  }
+  .logo-header{display:flex;align-items:center;gap:12px;}
+  .logo-numero{
+    background:var(--dourado);color:var(--verde);
+    font-family:'Oswald',sans-serif;font-size:26px;font-weight:700;
+    width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  }
+  .logo-nome{font-family:'Oswald',sans-serif;color:#fff;font-size:18px;font-weight:600;line-height:1.1;}
+  .logo-nome span{display:block;font-size:11px;font-weight:400;letter-spacing:2px;color:rgba(255,255,255,0.75);}
+  nav{display:flex;gap:24px;}
+  nav a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:13px;letter-spacing:1px;text-transform:uppercase;font-weight:700;transition:color .2s;}
+  nav a:hover{color:var(--dourado);}
+  .menu-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+  .menu-toggle span{width:24px;height:2px;background:#fff;border-radius:2px;}
 
-.logo {
-    font-size: 22px;
-    font-weight: bold;
-}
+  /* ===== HERO ===== */
+  .hero{
+    min-height:100vh;background:linear-gradient(135deg,#1B5E20 0%,#2E7D32 50%,#1B5E20 100%);
+    display:flex;align-items:center;padding:120px 5% 60px;position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-content{flex:1;max-width:600px;animation:fadeUp .8s ease both;}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--dourado);color:var(--verde);
+    padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+    margin-bottom:24px;
+  }
+  .hero h1{
+    font-family:'Oswald',sans-serif;font-size:clamp(48px,7vw,90px);font-weight:700;
+    color:#fff;line-height:0.95;margin-bottom:16px;
+  }
+  .hero h1 span{color:var(--dourado);}
+  .hero-subtitulo{font-size:18px;color:rgba(255,255,255,0.85);line-height:1.6;margin-bottom:16px;}
+  .hero-frase{
+    font-family:'Oswald',sans-serif;font-size:22px;color:var(--dourado);
+    border-left:4px solid var(--dourado);padding-left:16px;margin-bottom:36px;font-style:italic;
+  }
+  .hero-btns{display:flex;flex-wrap:wrap;gap:12px;}
+  .btn-primary{
+    background:var(--dourado);color:var(--verde);
+    padding:14px 32px;border-radius:4px;font-weight:700;font-size:15px;text-decoration:none;
+    border:none;cursor:pointer;transition:all .2s;text-transform:uppercase;letter-spacing:1px;
+  }
+  .btn-primary:hover{background:var(--dourado-escuro);transform:translateY(-2px);}
+  .btn-outline{
+    background:transparent;color:#fff;
+    padding:14px 32px;border-radius:4px;font-weight:700;font-size:15px;text-decoration:none;
+    border:2px solid rgba(255,255,255,0.6);cursor:pointer;transition:all .2s;text-transform:uppercase;letter-spacing:1px;
+  }
+  .btn-outline:hover{border-color:#fff;background:rgba(255,255,255,0.08);transform:translateY(-2px);}
+  .hero-img{flex:0 0 380px;display:flex;justify-content:center;align-items:flex-end;position:relative;}
+  .hero-img-placeholder{
+    width:320px;height:420px;border-radius:12px 12px 0 0;
+    background:rgba(255,255,255,0.12);border:2px dashed rgba(255,255,255,0.3);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);
+    font-size:14px;text-align:center;gap:8px;
+  }
+  .hero-img-placeholder svg{width:48px;height:48px;fill:rgba(255,255,255,0.4);}
 
-.logo span {
-    background: #f5b400;
-    color: #000;
-    padding: 3px 8px;
-    border-radius: 6px;
-    margin-left: 5px;
-}
+  /* ===== SEÇÕES GERAIS ===== */
+  section{padding:80px 5%;}
+  .container{max-width:1100px;margin:0 auto;}
+  .section-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--verde-claro);font-weight:700;margin-bottom:8px;}
+  .section-titulo{font-family:'Oswald',sans-serif;font-size:clamp(32px,5vw,52px);font-weight:700;line-height:1.1;color:#1a1a1a;margin-bottom:16px;}
+  .section-titulo span{color:var(--verde);}
+  .section-subtitulo{font-size:17px;color:var(--cinza-texto);line-height:1.7;max-width:600px;}
+  .divisor{width:60px;height:4px;background:var(--dourado);border-radius:2px;margin:20px 0;}
 
-nav a {
-    color: #fff;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 14px;
-}
+  /* ===== QUEM É ===== */
+  .quem-e{background:var(--cinza-claro);}
+  .quem-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .quem-img-box{
+    background:var(--verde);border-radius:12px;aspect-ratio:3/4;max-width:400px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);
+    font-size:14px;text-align:center;gap:8px;border:3px dashed rgba(255,255,255,0.3);position:relative;
+  }
+  .quem-img-box::after{
+    content:'FOTO DO CANDIDATO';position:absolute;bottom:20px;
+    background:var(--dourado);color:var(--verde);font-size:10px;font-weight:700;letter-spacing:2px;
+    padding:6px 12px;border-radius:20px;
+  }
+  .quem-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;}
+  .stat-card{background:#fff;border-radius:8px;padding:20px;text-align:center;box-shadow:var(--sombra);}
+  .stat-num{font-family:'Oswald',sans-serif;font-size:36px;font-weight:700;color:var(--verde);display:block;}
+  .stat-desc{font-size:12px;color:var(--cinza-texto);margin-top:4px;}
+  blockquote{
+    border-left:4px solid var(--dourado);padding:16px 20px;
+    background:#fff;border-radius:0 8px 8px 0;margin:24px 0;
+    font-size:17px;color:#444;line-height:1.7;font-style:italic;box-shadow:var(--sombra);
+  }
 
-/* HERO */
-.hero {
-    height: 90vh;
-    background: linear-gradient(rgba(0,80,0,0.8), rgba(0,80,0,0.8)),
-                url('https://via.placeholder.com/1500');
-    background-size: cover;
-    background-position: center;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-}
+  /* ===== PROPOSTAS ===== */
+  .propostas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px;}
+  .proposta-card{
+    background:#fff;border-radius:12px;padding:28px;box-shadow:var(--sombra);
+    border-top:4px solid var(--verde);transition:transform .2s,box-shadow .2s;
+    position:relative;overflow:hidden;
+  }
+  .proposta-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,0.15);}
+  .proposta-icone{
+    width:52px;height:52px;background:linear-gradient(135deg,var(--verde),var(--verde-claro));
+    border-radius:12px;display:flex;align-items:center;justify-content:center;
+    font-size:26px;margin-bottom:16px;
+  }
+  .proposta-titulo{font-family:'Oswald',sans-serif;font-size:20px;font-weight:600;color:var(--verde);margin-bottom:10px;}
+  .proposta-desc{font-size:14px;color:var(--cinza-texto);line-height:1.7;}
+  .proposta-num{
+    position:absolute;top:20px;right:20px;
+    font-family:'Oswald',sans-serif;font-size:60px;font-weight:700;color:rgba(0,100,0,0.05);
+    line-height:1;
+  }
 
-.hero-content h1 {
-    font-size: 60px;
-    margin: 10px 0;
-}
+  /* ===== GALERIA ===== */
+  .galeria{background:var(--verde);}
+  .galeria .section-label{color:rgba(255,255,255,0.6);}
+  .galeria .section-titulo{color:#fff;}
+  .galeria .section-subtitulo{color:rgba(255,255,255,0.75);}
+  .galeria-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-template-rows:auto auto;
+    gap:12px;margin-top:40px;
+  }
+  .galeria-item{
+    background:rgba(255,255,255,0.12);border-radius:8px;
+    aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:rgba(255,255,255,0.7);font-size:12px;text-align:center;gap:6px;cursor:pointer;
+    border:2px dashed rgba(255,255,255,0.25);transition:all .2s;position:relative;overflow:hidden;
+  }
+  .galeria-item:hover{border-color:var(--dourado);transform:scale(1.02);}
+  .galeria-item.grande{grid-column:span 2;grid-row:span 2;aspect-ratio:1;}
+  .galeria-item svg{width:32px;height:32px;fill:rgba(255,255,255,0.4);}
+  .galeria-label{
+    position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.6));
+    padding:16px 12px 8px;color:#fff;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  }
+  .galeria-upload{
+    margin-top:32px;text-align:center;
+  }
+  .galeria-upload p{color:rgba(255,255,255,0.75);margin-bottom:16px;font-size:16px;}
 
-.hero-content h2 {
-    color: #f5b400;
-    font-size: 28px;
-}
+  /* MODAL */
+  .modal-overlay{
+    display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;
+    align-items:center;justify-content:center;padding:20px;
+  }
+  .modal-overlay.ativo{display:flex;}
+  .modal{
+    background:#fff;border-radius:16px;padding:36px;max-width:480px;width:100%;
+    position:relative;animation:fadeUp .3s ease;
+  }
+  .modal h3{font-family:'Oswald',sans-serif;font-size:24px;color:var(--verde);margin-bottom:8px;}
+  .modal p{color:var(--cinza-texto);font-size:14px;margin-bottom:24px;}
+  .modal-close{
+    position:absolute;top:16px;right:16px;background:none;border:none;
+    font-size:24px;cursor:pointer;color:#999;line-height:1;
+  }
+  .form-group{margin-bottom:16px;}
+  .form-group label{display:block;font-size:13px;font-weight:700;color:#444;margin-bottom:6px;}
+  .form-group input,.form-group textarea{
+    width:100%;padding:12px 14px;border:1.5px solid #ddd;border-radius:8px;
+    font-size:15px;font-family:'Lato',sans-serif;transition:border-color .2s;
+  }
+  .form-group input:focus,.form-group textarea:focus{border-color:var(--verde);outline:none;}
+  .upload-area{
+    border:2px dashed #ccc;border-radius:8px;padding:24px;text-align:center;cursor:pointer;
+    color:#999;font-size:14px;transition:border-color .2s;
+  }
+  .upload-area:hover{border-color:var(--verde);color:var(--verde);}
+  .btn-enviar{
+    width:100%;padding:14px;background:var(--verde);color:#fff;
+    border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;
+    text-transform:uppercase;letter-spacing:1px;transition:background .2s;margin-top:8px;
+  }
+  .btn-enviar:hover{background:var(--verde-medio);}
 
-.hero-content p {
-    margin-top: 10px;
-}
+  /* ===== DEPOIMENTOS ===== */
+  .depoimentos{background:var(--cinza-claro);}
+  .depo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:48px;}
+  .depo-card{
+    background:#fff;border-radius:12px;padding:28px;box-shadow:var(--sombra);
+    border-left:4px solid var(--dourado);position:relative;
+  }
+  .depo-aspas{
+    font-family:'Oswald',sans-serif;font-size:80px;color:rgba(249,168,37,0.15);
+    position:absolute;top:10px;right:20px;line-height:1;
+  }
+  .depo-texto{font-size:15px;color:#444;line-height:1.7;font-style:italic;margin-bottom:20px;}
+  .depo-autor{display:flex;align-items:center;gap:12px;}
+  .depo-avatar{
+    width:46px;height:46px;border-radius:50%;background:var(--verde);
+    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;
+    flex-shrink:0;
+  }
+  .depo-nome{font-weight:700;font-size:14px;color:#222;}
+  .depo-local{font-size:12px;color:var(--cinza-texto);}
+  .depo-estrelas{color:var(--dourado);font-size:13px;margin-top:2px;}
 
-.badge {
-    display: inline-block;
-    background: #f5b400;
-    color: #000;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 14px;
-}
+  /* ===== CONTATO ===== */
+  .contato-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+  .contato-info{display:flex;flex-direction:column;gap:20px;}
+  .contato-item{display:flex;align-items:flex-start;gap:16px;}
+  .contato-icone-box{
+    width:48px;height:48px;background:var(--verde);border-radius:10px;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .contato-icone-box svg{width:22px;height:22px;fill:#fff;}
+  .contato-titulo{font-weight:700;font-size:15px;color:#222;margin-bottom:2px;}
+  .contato-valor{font-size:14px;color:var(--cinza-texto);}
+  .contato-valor a{color:var(--verde);text-decoration:none;}
+  .form-contato{background:var(--cinza-claro);border-radius:16px;padding:36px;}
+  .form-contato h3{font-family:'Oswald',sans-serif;font-size:24px;color:var(--verde);margin-bottom:6px;}
+  .form-contato p{color:var(--cinza-texto);font-size:14px;margin-bottom:24px;}
+  .mapa-placeholder{
+    background:var(--cinza-claro);border-radius:12px;height:200px;margin-top:24px;
+    display:flex;align-items:center;justify-content:center;color:#999;font-size:14px;
+    border:2px dashed #ddd;text-align:center;gap:8px;flex-direction:column;
+  }
+  .redes-sociais{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;}
+  .rede-btn{
+    display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:8px;
+    font-weight:700;font-size:13px;text-decoration:none;transition:all .2s;
+    border:2px solid var(--verde);color:var(--verde);
+  }
+  .rede-btn:hover{background:var(--verde);color:#fff;}
+  .rede-btn svg{width:16px;height:16px;}
 
-.buttons {
-    margin-top: 20px;
-}
+  /* ===== FOOTER ===== */
+  footer{background:#111;color:rgba(255,255,255,0.7);padding:48px 5%;text-align:center;}
+  .footer-logo{font-family:'Oswald',sans-serif;font-size:36px;font-weight:700;color:#fff;margin-bottom:4px;}
+  .footer-logo span{color:var(--dourado);}
+  .footer-psd{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:32px;}
+  .footer-links{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:32px;}
+  .footer-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;transition:color .2s;}
+  .footer-links a:hover{color:var(--dourado);}
+  .footer-aviso{font-size:11px;color:rgba(255,255,255,0.3);line-height:1.6;}
 
-.btn {
-    padding: 12px 20px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    margin: 5px;
-    display: inline-block;
-}
+  /* ===== WHATSAPP FLOAT ===== */
+  .wpp-float{
+    position:fixed;bottom:28px;right:28px;z-index:998;
+    width:60px;height:60px;background:#25D366;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 20px rgba(37,211,102,0.5);text-decoration:none;
+    transition:transform .2s;
+  }
+  .wpp-float:hover{transform:scale(1.1);}
+  .wpp-float svg{width:30px;height:30px;fill:#fff;}
 
-.btn-green {
-    background: #2f7a3e;
-    color: #fff;
-}
+  /* ===== ANIMAÇÕES ===== */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
+  .reveal.visivel{opacity:1;transform:none;}
 
-.btn-yellow {
-    background: #f5b400;
-    color: #000;
-}
-
-/* SECTION */
-.section {
-    padding: 60px 40px;
-    display: flex;
-    gap: 40px;
-    align-items: center;
-}
-
-.section img {
-    width: 400px;
-    border-radius: 20px;
-}
-
-.section-content h2 {
-    color: #1f5e2c;
-    font-size: 36px;
-}
-
-.stats {
-    margin-top: 30px;
-    display: flex;
-    gap: 40px;
-}
-
-.stat {
-    text-align: center;
-}
-
-.stat h3 {
-    color: #1f5e2c;
-    font-size: 28px;
-}
-
-/* FLOAT BUTTON */
-.whatsapp {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25d366;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-}
+  /* ===== RESPONSIVO ===== */
+  @media(max-width:900px){
+    .quem-grid,.contato-grid{grid-template-columns:1fr;}
+    .hero{flex-direction:column;text-align:center;}
+    .hero-content{max-width:100%;}
+    .hero-img{flex:none;display:none;}
+    .hero-frase{text-align:left;}
+    .hero-btns{justify-content:center;}
+    .galeria-grid{grid-template-columns:repeat(2,1fr);}
+    .galeria-item.grande{grid-column:span 2;grid-row:span 1;}
+    nav{display:none;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:var(--verde);padding:16px 5%;}
+    nav.aberto{display:flex;}
+    .menu-toggle{display:flex;}
+  }
+  @media(max-width:500px){
+    .quem-stats{grid-template-columns:1fr 1fr;}
+    .galeria-grid{grid-template-columns:repeat(2,1fr);}
+  }
 </style>
 </head>
-
 <body>
 
-<header>
-    <div class="logo">Dr. Furlan <span>55</span></div>
-    <nav>
-        <a href="#">INÍCIO</a>
-        <a href="#">QUEM SOU</a>
-        <a href="#">OBRAS</a>
-        <a href="#">PROPOSTAS</a>
-        <a href="#">GALERIA</a>
-        <a href="#">DEPOIMENTOS</a>
-        <a href="#">CONTATO</a>
-    </nav>
+<!-- HEADER -->
+<header id="header">
+  <div class="logo-header">
+    <div class="logo-numero">55</div>
+    <div class="logo-nome">Dr. Furlan<span>PSD • FORTALEZA</span></div>
+  </div>
+  <nav id="nav">
+    <a href="#quem-e">Quem é</a>
+    <a href="#propostas">Propostas</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#depoimentos">Depoimentos</a>
+    <a href="#contato">Contato</a>
+  </nav>
+  <div class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
 </header>
 
-<section class="hero">
-    <div class="hero-content">
-        <div class="badge">PSD • NÚMERO 55</div>
-        <h1>Dr. Furlan</h1>
-        <h2>Ex-prefeito de Macapá • A voz do povo amapaense</h2>
-        <p>Saúde, obras e dignidade — quem fez, vai fazer mais</p>
-
-        <div class="buttons">
-            <a href="#" class="btn btn-green">VEJA AS OBRAS</a>
-            <a href="#" class="btn btn-yellow">FALE COM O DR. FURLAN</a>
-        </div>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+      PSD • Número 55 • Vereador
     </div>
+    <h1>Dr.<br/><span>Furlan</span></h1>
+    <p class="hero-subtitulo">O médico que saiu do consultório para lutar na Câmara pelo povo de Fortaleza.</p>
+    <p class="hero-frase">"Quem cuida da saúde do povo sabe o que o povo precisa."</p>
+    <div class="hero-btns">
+      <a href="#propostas" class="btn-primary">Ver Propostas</a>
+      <a href="#contato" class="btn-outline">Fale com o Furlan</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-img-placeholder">
+      <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"/></svg>
+      Foto do Candidato<br/><small>Substitua pelo arquivo da foto</small>
+    </div>
+  </div>
 </section>
 
-<section class="section">
-    <img src="https://via.placeholder.com/400" alt="Dr Furlan">
-
-    <div class="section-content">
-        <h2>Quem é o Dr. Furlan</h2>
-        <p>
-            Nascido e criado em Macapá, o Dr. Furlan é médico há mais de 20 anos.
-            Conhece de perto a realidade do povo amapaense.
+<!-- QUEM É -->
+<section class="quem-e" id="quem-e">
+  <div class="container">
+    <div class="quem-grid">
+      <div class="quem-img-box">
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="rgba(255,255,255,0.3)"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z"/></svg>
+        Foto do Candidato<br/><small>Substitua pelo arquivo da foto</small>
+      </div>
+      <div class="reveal">
+        <p class="section-label">Conheça o candidato</p>
+        <h2 class="section-titulo">Um médico <span>nascido aqui,</span> criado aqui</h2>
+        <div class="divisor"></div>
+        <blockquote>
+          "Atendi nas UPAs, nos postos, nos bairros mais esquecidos. Sei o que é esperar horas por uma consulta. Sei o que é falta de remédio. Por isso decidi ir além do consultório."
+        </blockquote>
+        <p style="color:var(--cinza-texto);line-height:1.8;font-size:16px;">
+          Nascido e criado em Fortaleza, o Dr. Furlan construiu sua carreira servindo ao povo — não às elites. Médico há mais de 20 anos, ele atendeu milhares de famílias nos postos e UPAs da cidade. Candidato ao cargo de vereador pelo PSD, ele leva para a Câmara a mesma dedicação que mostrou no consultório.
         </p>
-        <p>
-            Foi prefeito de Macapá de 2020 a 2026, período em que transformou a cidade
-            com obras que levaram dignidade, saúde e lazer.
-        </p>
-
-        <div class="stats">
-            <div class="stat">
-                <h3>+20</h3>
-                <p>Anos de Medicina</p>
-            </div>
-            <div class="stat">
-                <h3>6</h3>
-                <p>Anos como Prefeito</p>
-            </div>
-            <div class="stat">
-                <h3>+50</h3>
-                <p>Obras Entregues</p>
-            </div>
+        <div class="quem-stats">
+          <div class="stat-card">
+            <span class="stat-num">20+</span>
+            <span class="stat-desc">anos de medicina</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">15 mil</span>
+            <span class="stat-desc">atendimentos realizados</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">30+</span>
+            <span class="stat-desc">bairros visitados</span>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<div class="whatsapp"></div>
+<!-- PROPOSTAS -->
+<section id="propostas">
+  <div class="container">
+    <div style="text-align:center;" class="reveal">
+      <p class="section-label">O que vamos fazer</p>
+      <h2 class="section-titulo">Propostas que <span>vêm da rua</span></h2>
+      <div class="divisor" style="margin:20px auto;"></div>
+      <p class="section-subtitulo" style="margin:0 auto;text-align:center;">Cada proposta foi construída ouvindo o povo, bairro a bairro, família por família.</p>
+    </div>
+    <div class="propostas-grid">
+      <div class="proposta-card reveal">
+        <div class="proposta-num">01</div>
+        <div class="proposta-icone">🏥</div>
+        <h3 class="proposta-titulo">Saúde em Todo Canto</h3>
+        <p class="proposta-desc">Criar postos de saúde 24h nos bairros periféricos. Ninguém vai esperar mais de 2 horas por atendimento em Fortaleza.</p>
+      </div>
+      <div class="proposta-card reveal">
+        <div class="proposta-num">02</div>
+        <div class="proposta-icone">📚</div>
+        <h3 class="proposta-titulo">Escola que Abraça</h3>
+        <p class="proposta-desc">Atendimento psicossocial nas escolas públicas e reforço escolar noturno para jovens trabalhadores que estudam depois do serviço.</p>
+      </div>
+      <div class="proposta-card reveal">
+        <div class="proposta-num">03</div>
+        <div class="proposta-icone">💧</div>
+        <h3 class="proposta-titulo">Água e Dignidade</h3>
+        <p class="proposta-desc">Fiscalizar e exigir saneamento básico nas comunidades ainda sem acesso a esgoto tratado e água limpa.</p>
+      </div>
+      <div class="proposta-card reveal">
+        <div class="proposta-num">04</div>
+        <div class="proposta-icone">👴</div>
+        <h3 class="proposta-titulo">Respeito ao Idoso</h3>
+        <p class="proposta-desc">Programa "Médico na Casa" — visitas domiciliares a idosos acamados sem plano de saúde, em todos os bairros.</p>
+      </div>
+      <div class="proposta-card reveal">
+        <div class="proposta-num">05</div>
+        <div class="proposta-icone">🌱</div>
+        <h3 class="proposta-titulo">Emprego Começa Aqui</h3>
+        <p class="proposta-desc">Parcerias com SENAC e SENAI para cursos gratuitos de qualificação profissional dentro dos bairros da periferia.</p>
+      </div>
+      <div class="proposta-card reveal">
+        <div class="proposta-num">06</div>
+        <div class="proposta-icone">🚌</div>
+        <h3 class="proposta-titulo">Transporte Humano</h3>
+        <p class="proposta-desc">Linhas de ônibus em horários noturnos para quem trabalha no turno da noite e não tem como voltar pra casa.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- GALERIA -->
+<section class="galeria" id="galeria">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Nas ruas de Fortaleza</p>
+      <h2 class="section-titulo">Ele está onde <span style="color:var(--dourado);">você está</span></h2>
+      <div class="divisor"></div>
+      <p class="section-subtitulo">De bairro em bairro, ouvindo cada história. Veja os momentos que o povo nos mandou.</p>
+    </div>
+    <div class="galeria-grid reveal">
+      <div class="galeria-item grande">
+        <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        <span style="font-size:12px;">Adicione sua foto aqui</span>
+        <div class="galeria-label">Bairro Mondubim</div>
+      </div>
+      <div class="galeria-item">
+        <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        <div class="galeria-label">UPA Messejana</div>
+      </div>
+      <div class="galeria-item">
+        <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        <div class="galeria-label">Praça do Mercado</div>
+      </div>
+      <div class="galeria-item">
+        <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        <div class="galeria-label">Conjunto Ceará</div>
+      </div>
+      <div class="galeria-item">
+        <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        <div class="galeria-label">Bom Jardim</div>
+      </div>
+      <div class="galeria-item">
+        <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        <div class="galeria-label">Parangaba</div>
+      </div>
+    </div>
+    <div class="galeria-upload reveal">
+      <p>Tirou uma foto com o Dr. Furlan? Manda pra gente aparecer aqui!</p>
+      <button class="btn-primary" onclick="abrirModal()" style="border:none;cursor:pointer;">
+        📸 Enviar minha foto
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL ENVIO DE FOTO -->
+<div class="modal-overlay" id="modal" onclick="fecharModalFora(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="fecharModal()">✕</button>
+    <h3>📸 Sua foto no site!</h3>
+    <p>Envie sua foto com o Dr. Furlan e faça parte do movimento. Ela pode aparecer aqui no site para todo Fortaleza ver!</p>
+    <div class="form-group">
+      <label>Seu nome *</label>
+      <input type="text" placeholder="Ex: Maria das Graças"/>
+    </div>
+    <div class="form-group">
+      <label>Seu bairro *</label>
+      <input type="text" placeholder="Ex: Mondubim"/>
+    </div>
+    <div class="form-group">
+      <label>Sua foto *</label>
+      <div class="upload-area" onclick="this.nextElementSibling.click()">
+        📷 Clique aqui para escolher sua foto
+      </div>
+      <input type="file" accept="image/*" style="display:none"/>
+    </div>
+    <button class="btn-enviar" onclick="enviarFoto()">Enviar minha foto! 🚀</button>
+  </div>
+</div>
+
+<!-- DEPOIMENTOS -->
+<section class="depoimentos" id="depoimentos">
+  <div class="container">
+    <div class="reveal" style="text-align:center;">
+      <p class="section-label">Voz do povo</p>
+      <h2 class="section-titulo">Quem conhece, <span>apoia</span></h2>
+      <div class="divisor" style="margin:20px auto;"></div>
+    </div>
+    <div class="depo-grid">
+      <div class="depo-card reveal">
+        <div class="depo-aspas">"</div>
+        <p class="depo-texto">O Dr. Furlan foi o único que foi até minha rua perguntar o que a gente precisava. Não veio só pedir voto, veio ouvir de verdade.</p>
+        <div class="depo-autor">
+          <div class="depo-avatar">MG</div>
+          <div>
+            <div class="depo-nome">Maria das Graças</div>
+            <div class="depo-local">58 anos — Parangaba</div>
+            <div class="depo-estrelas">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="depo-card reveal">
+        <div class="depo-aspas">"</div>
+        <p class="depo-texto">Ele atendeu minha mãe na UPA quando ela não tinha condições. Esse homem tem coração, e é isso que a Câmara precisa.</p>
+        <div class="depo-autor">
+          <div class="depo-avatar">RN</div>
+          <div>
+            <div class="depo-nome">Raimundo Neto</div>
+            <div class="depo-local">34 anos — Mondubim</div>
+            <div class="depo-estrelas">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="depo-card reveal">
+        <div class="depo-aspas">"</div>
+        <p class="depo-texto">Mulher, jovem, trabalhadora — ele fala por mim. Finalmente um político que entende a nossa realidade lá no bairro.</p>
+        <div class="depo-autor">
+          <div class="depo-avatar">FL</div>
+          <div>
+            <div class="depo-nome">Fernanda Lima</div>
+            <div class="depo-local">27 anos — Bom Jardim</div>
+            <div class="depo-estrelas">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="depo-card reveal">
+        <div class="depo-aspas">"</div>
+        <p class="depo-texto">Político que foi médico sabe o que é sofrimento. Dr. Furlan viveu isso do lado de cá, do lado do povo. Merece nosso voto.</p>
+        <div class="depo-autor">
+          <div class="depo-avatar">ZC</div>
+          <div>
+            <div class="depo-nome">Zé da Construção</div>
+            <div class="depo-local">61 anos — Conjunto Ceará</div>
+            <div class="depo-estrelas">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:48px;">
+      <p class="section-label">Fale com a gente</p>
+      <h2 class="section-titulo">Contato e <span>Comitê</span></h2>
+      <div class="divisor" style="margin:20px auto;"></div>
+    </div>
+    <div class="contato-grid">
+      <div>
+        <div class="contato-info reveal">
+          <div class="contato-item">
+            <div class="contato-icone-box">
+              <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            </div>
+            <div>
+              <div class="contato-titulo">WhatsApp</div>
+              <div class="contato-valor"><a href="https://wa.me/5585992345500">(85) 99234-5500</a></div>
+            </div>
+          </div>
+          <div class="contato-item">
+            <div class="contato-icone-box">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </div>
+            <div>
+              <div class="contato-titulo">E-mail</div>
+              <div class="contato-valor"><a href="mailto:contato@drfurlan55.com.br">contato@drfurlan55.com.br</a></div>
+            </div>
+          </div>
+          <div class="contato-item">
+            <div class="contato-icone-box">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div>
+              <div class="contato-titulo">Comitê de Campanha</div>
+              <div class="contato-valor">Av. Bezerra de Menezes, 1.420<br/>São Gerardo — Fortaleza, CE</div>
+            </div>
+          </div>
+          <div class="contato-item">
+            <div class="contato-icone-box">
+              <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+            </div>
+            <div>
+              <div class="contato-titulo">Horário do Comitê</div>
+              <div class="contato-valor">Seg–Sex: 8h às 18h<br/>Sábados: 8h às 13h</div>
+            </div>
+          </div>
+        </div>
+        <div class="redes-sociais reveal">
+          <a href="#" class="rede-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            @drfurlan55
+          </a>
+          <a href="#" class="rede-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Dr. Furlan 55
+          </a>
+        </div>
+        <div class="mapa-placeholder reveal">
+          <svg width="32" height="32" fill="#ccc" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Mapa do comitê aqui<br/><small>Incorpore o Google Maps com o endereço real</small>
+        </div>
+      </div>
+      <div class="form-contato reveal">
+        <h3>Mande sua mensagem</h3>
+        <p>Sua opinião importa. Fale com a equipe do Dr. Furlan.</p>
+        <div class="form-group">
+          <label>Seu nome</label>
+          <input type="text" placeholder="Como quer ser chamado(a)?"/>
+        </div>
+        <div class="form-group">
+          <label>Seu bairro</label>
+          <input type="text" placeholder="Onde você mora?"/>
+        </div>
+        <div class="form-group">
+          <label>Telefone / WhatsApp</label>
+          <input type="tel" placeholder="(85) 9 ____-____"/>
+        </div>
+        <div class="form-group">
+          <label>Sua mensagem</label>
+          <textarea rows="4" placeholder="O que você precisa? O que quer ver mudado?" style="resize:vertical;"></textarea>
+        </div>
+        <button class="btn-enviar" onclick="enviarMensagem()">Enviar mensagem 💬</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Dr. <span>Furlan</span> 55</div>
+  <div class="footer-psd">PSD • Fortaleza • Ceará</div>
+  <div class="footer-links">
+    <a href="#inicio">Início</a>
+    <a href="#quem-e">Quem é</a>
+    <a href="#propostas">Propostas</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#depoimentos">Depoimentos</a>
+    <a href="#contato">Contato</a>
+  </div>
+  <p class="footer-aviso">
+    Material de campanha eleitoral — Dr. Furlan 55 • PSD Fortaleza<br/>
+    Este é um protótipo para fins de apresentação. Contatos e dados fictícios.<br/>
+    © 2024 — Todos os direitos reservados
+  </p>
+</footer>
+
+<!-- WHATSAPP FLUTUANTE -->
+<a href="https://wa.me/5585992345500" class="wpp-float" target="_blank" title="Fale pelo WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  // Menu mobile
+  function toggleMenu(){
+    document.getElementById('nav').classList.toggle('aberto');
+  }
+
+  // Modal
+  function abrirModal(){
+    document.getElementById('modal').classList.add('ativo');
+    document.body.style.overflow='hidden';
+  }
+  function fecharModal(){
+    document.getElementById('modal').classList.remove('ativo');
+    document.body.style.overflow='';
+  }
+  function fecharModalFora(e){
+    if(e.target===document.getElementById('modal')) fecharModal();
+  }
+
+  // Envios simulados
+  function enviarFoto(){
+    alert('Foto enviada! Obrigado por fazer parte do movimento do Dr. Furlan 55! 🟢');
+    fecharModal();
+  }
+  function enviarMensagem(){
+    alert('Mensagem enviada! A equipe do Dr. Furlan vai entrar em contato em breve. Obrigado! 💬');
+  }
+
+  // Scroll reveal
+  const observador = new IntersectionObserver((entradas)=>{
+    entradas.forEach(e=>{
+      if(e.isIntersecting) e.target.classList.add('visivel');
+    });
+  },{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>observador.observe(el));
+
+  // Fechar menu ao clicar em link
+  document.querySelectorAll('nav a').forEach(a=>{
+    a.addEventListener('click',()=>{
+      document.getElementById('nav').classList.remove('aberto');
+    });
+  });
+</script>
 </body>
 </html>
